@@ -24,6 +24,10 @@ $ puppet-languageserver -v
 2.0.4
 ```
 
+To unlock the full potential of the LSP you need to meet the requierements of puppet-editor-service :
+  - Puppet 8 or above
+  - Ruby 3.1 or above
+
 It is possible to pass puppet config settings to the server. To do that, open Zed Settings and under the `lsp` config
 section add the following:
 
@@ -35,6 +39,27 @@ section add the following:
             "--puppet-settings=--environment,production"
         ]
     }
+}
+```
+
+```
+"lsp": {
+  "puppet-languageserver": {
+    "binary": {
+      "path": "/opt/puppet-editor-services/puppet-languageserver",
+      "arguments": [
+        "--stdio",
+        "--no-cache",
+        "--puppet-settings=--environment,production"
+      ]
+    },
+    "settings": {
+      "puppet": {
+        "modulePath": "./modules:./site-modules",
+        "environment": "development"
+      }
+    }
+  },
 }
 ```
 
