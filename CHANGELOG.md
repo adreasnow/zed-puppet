@@ -9,6 +9,20 @@ from zed-puppet v0.2.0.
 
 --------------------------------
 
+## Unreleased
+
+### Fixes
+
+- Sync all TreeSitter query files with upstream tree-sitter-puppet grammar
+- Fix injections.scm to prevent Zed errors about missing @content captures
+- Update indents.scm to use modern @indent.begin/@indent.end/@indent.branch/@indent.auto syntax
+- Update highlights.scm to match upstream grammar exactly
+
+### Features
+
+- Add folds.scm for code folding support
+- Add locals.scm for scope analysis and variable tracking
+
 ## 0.2.0, 04/08/2025
 
 ### Upgrade

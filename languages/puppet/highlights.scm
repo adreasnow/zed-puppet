@@ -2,6 +2,10 @@
 
 (identifier) @variable
 
+; Includes
+
+"include" @include
+
 (include_statement (identifier) @type)
 
 (include_statement (class_identifier (identifier) @type . ))
@@ -11,11 +15,15 @@
 [
   "class"
   "inherits"
-  "include"
   "node"
   "type"
   "tag"
 ] @keyword
+
+[
+  "define"
+  "function"
+] @keyword.function
 
 [
   "if"
@@ -24,11 +32,6 @@
   "unless"
   "case"
 ] @conditional
-
-[
-  "define"
-  "function"
-] @keyword.function
 
 (default_case "default" @conditional)
 
@@ -84,25 +87,18 @@
 (class_inherits (identifier) @type)
 (class_inherits (class_identifier (identifier) @type . ))
 
+(resource_declaration
+  (identifier) @type)
+(resource_declaration
+  (class_identifier (identifier) @type . ))
+
 (node_definition (node_name (identifier) @type))
 
 ((identifier) @type
   (#lua-match? @type "^[A-Z]"))
 
 ((identifier) @type.builtin
-  (#any-of? @type.builtin "Boolean" "Integer" "Float" "String" "Array" "Hash" "Regexp" "Variant" "Data" "Undef" "Default" "File" "Enum" "Optional"))
-
-((identifier) @function.builtin
-  (#any-of? @function.builtin "contain"))
-
-; Handle resource highlighting
-(resource_declaration
-    type: (identifier) @keyword)
-
-; Handle Types reference highlighting
-(resource_reference
-  (identifier) @variant)
-
+  (#any-of? @type.builtin "Boolean" "Integer" "Float" "String" "Array" "Hash" "Regexp" "Variant" "Data" "Undef" "Default" "File"))
 
 ; "Namespaces"
 

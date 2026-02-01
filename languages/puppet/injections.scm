@@ -1,2 +1,2 @@
-((regex) @regex
-  (#offset! @regex 0 1 0 -1))
+; Injections disabled - the upstream regex injection doesn't work properly with Zed
+; which requires @content or @injection.content captures
